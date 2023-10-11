@@ -15,10 +15,9 @@ public class BaseballController {
 
     public void choiceRestart(){
         baseballService = new BaseballService();
+        outputView.printGameStartMessage();
 
-        int quit;
         do{
-            outputView.printGameStartMessage();
             Baseball baseBall = baseballService.startGame();
             playGame(baseBall);
 
