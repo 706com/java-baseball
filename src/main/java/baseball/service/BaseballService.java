@@ -4,6 +4,7 @@ import baseball.domain.Baseball;
 import baseball.domain.Computer;
 import baseball.domain.User;
 import baseball.view.InputView;
+import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public class BaseballService {
     Baseball baseball;
 
     private InputView inputView = new InputView();
+
+    private OutputView outputView = new OutputView();
 
     public Baseball startGame(){
         User user = new User();
@@ -33,13 +36,13 @@ public class BaseballService {
         List<Integer> computerNumber = baseball.getComputer().getNumbers();
 
         baseball.getCount().compareNumber(userNumber,computerNumber);
-        System.out.println(baseball.getCount().getStrike()+" "+baseball.getCount().getBall());
+
         if(baseball.getCount().getStrike() == 3){
+            outputView.printGameOverMessage();
             return false;
         }
-        else{
-            return true;
-        }
+        return true;
+
     }
 
     public boolean choiceRestart(){
@@ -48,8 +51,6 @@ public class BaseballService {
         if(input.equals("1")) {
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     }
 }
