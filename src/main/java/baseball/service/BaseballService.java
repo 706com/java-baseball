@@ -26,10 +26,30 @@ public class BaseballService {
     }
 
     public void callNumber(Baseball baseball){
+
         String number = Console.readLine();
-        baseball.getUser().createUserNumbers(number);
+        if(isValidNumber(number)){
+            baseball.getUser().createUserNumbers(number);
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+
     }
 
+    public boolean isValidNumber(String number){
+        if(number.length() != 3)
+            return false;
+
+        for(int i=0; i<number.length(); i++){
+            char c = number.charAt(i);
+            if(c<48 || c>57){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public boolean checkNumber(Baseball baseball){
         List<Integer> userNumber = baseball.getUser().getNumbers();
@@ -42,7 +62,6 @@ public class BaseballService {
             return false;
         }
         return true;
-
     }
 
     public boolean choiceRestart(){
