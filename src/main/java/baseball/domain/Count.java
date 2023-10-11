@@ -17,6 +17,7 @@ public class Count {
         initNumber();
         checkStrike(user,computer);
         checkBall(user,computer);
+        sayResult();
     }
 
     public void checkStrike(List<Integer> user , List<Integer> computer){
@@ -37,6 +38,20 @@ public class Count {
             }
         }
     }
+
+    public void sayResult(){
+        if(ball != 0){
+            System.out.print(ball+"볼 ");
+        }
+        if(strike != 0){
+            System.out.print(strike+"스트라이크");
+        }
+        if(ball==0 && strike==0){
+            System.out.print("낫싱");
+        }
+        System.out.println();
+    }
+
     public void initNumber(){
         this.ball = 0;
         this.strike = 0;
