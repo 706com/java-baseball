@@ -7,10 +7,6 @@ public class User {
 
     private List<Integer> numbers;
 
-//    public User(String userInput) {
-//        this.numbers = createUserNumbers(userInput);
-//    }
-
     public List<Integer> createUserNumbers(String userInput){
         numbers = new ArrayList<>();
         for(char x : userInput.toCharArray()){
