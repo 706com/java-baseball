@@ -13,23 +13,26 @@ public class Count {
         this.strike = strike;
     }
 
-    public int getBall() {
-        return ball;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
     public void compareNumber(List<Integer> user, List<Integer> computer){
         initNumber();
+        checkStrike(user,computer);
+        checkBall(user,computer);
+    }
+
+    public void checkStrike(List<Integer> user , List<Integer> computer){
+        for(int i=0; i<user.size(); i++){
+            for(int j=0; j<computer.size(); j++){
+                if(user.get(i) == computer.get(j) && i == j){
+                    strike++;
+                }
+            }
+        }
+    }
+    public void checkBall(List<Integer> user , List<Integer> computer){
         for(int i=0; i<user.size(); i++){
             for(int j=0; j<computer.size(); j++){
                 if(user.get(i) == computer.get(j) && i != j){
                     ball++;
-                }
-                if(user.get(i) == computer.get(j) && i == j){
-                    strike++;
                 }
             }
         }
@@ -37,5 +40,13 @@ public class Count {
     public void initNumber(){
         this.ball = 0;
         this.strike = 0;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
     }
 }
